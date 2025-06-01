@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "149287078485",
+    "project_id": "fast4u---app",
+    "storage_bucket": "fast4u---app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149287078485:android:44447eb59a9a3dea69e2dc",
+        "android_client_info": {
+          "package_name": "com.example.finalsprintproj_fast4u"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6FnIIbHYGnfZeYyK3rb4oc_3N9X0QMEs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
