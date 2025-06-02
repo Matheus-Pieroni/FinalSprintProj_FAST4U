@@ -1,30 +1,26 @@
 package com.example.finalsprintproj_fast4u;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.credentials.CredentialManager;
-import androidx.credentials.GetCredentialRequest;
-import androidx.credentials.GetCredentialResponse;
-import androidx.credentials.Credential;
-import androidx.credentials.exceptions.GetCredentialException;
-import androidx.credentials.*;
-
-import com.google.android.libraries.identity.googleid.GetGoogleIdOption;
-import com.google.android.libraries.identity.googleid.GoogleIdCredential;
+import com.google.android.gms.auth.api.signin.*;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.*;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "GoogleSignIn";
-    private CredentialManager credentialManager;
+
+    private FirebaseAuth mAuth;
+    private GoogleSignInClient mGoogleSignInClient;
     private Button signInButton;
 
     @Override
@@ -32,83 +28,66 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        credentialManager = CredentialManager.create(this);
+        // Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
 
+        // Botão
         signInButton = findViewById(R.id.signInButton);
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signInWithGoogleCredentialManager();
+
+        // Configurar Google Sign-In
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id)) // Copie do google-services.json
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        signInButton.setOnClickListener(view -> signIn());
+    }
+
+    private void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account.getIdToken());
+
+            } catch (ApiException e) {
+                Log.w(TAG, "Erro no Google sign in", e);
+                Toast.makeText(this, "Falha no login: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        });
-    }
-
-    private void signInWithGoogleCredentialManager() {
-        String webClientId = "509687757481-bhhm7l2uen56t5jocgo6c87jggmmmghl.apps.googleusercontent.com";
-
-        GetGoogleIdOption googleIdOption = new GetGoogleIdOption.Builder()
-                .setFilterByAuthorizedAccounts(true)
-                .setServerClientId(webClientId)
-                .build();
-
-        GetCredentialRequest request = new GetCredentialRequest.Builder()
-                .addCredentialOption(googleIdOption)
-                .build();
-
-        credentialManager.getCredentialAsync(this, request)
-                .addOnSuccessListener(result -> handleCredentialResponse(result))
-                .addOnFailureListener(e -> handleCredentialFailure(e));
-    }
-
-    private void handleCredentialResponse(GetCredentialResponse response) {
-        Credential credential = response.getCredential();
-
-        if (credential instanceof GoogleIdCredential) {
-            GoogleIdCredential googleId = (GoogleIdCredential) credential;
-            String idToken = googleId.getIdToken();
-            String email = googleId.getId();
-            String displayName = googleId.getDisplayName();
-
-            Log.d(TAG, "Login com sucesso!");
-            Log.d(TAG, "Nome: " + displayName);
-            Log.d(TAG, "Email: " + email);
-            Log.d(TAG, "ID Token: " + idToken);
-
-            updateUI(email, displayName);
-        } else {
-            Log.w(TAG, "Tipo de credencial inesperado: " + credential.getType());
-            Toast.makeText(this, "Erro: Tipo de credencial inesperado.", Toast.LENGTH_SHORT).show();
         }
     }
 
-    @SuppressLint("RestrictedApi")
-    private void handleCredentialFailure(Exception e) {
-        if (e instanceof GetCredentialException) {
-            Log.e(TAG, "Erro ao obter credencial: " + ((GetCredentialException) e).getErrorMessage());
+    private void firebaseAuthWithGoogle(String idToken) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
 
-            if (e instanceof NoDataFromCredentialProviderException) {
-                Toast.makeText(this, "Login cancelado ou nenhuma conta Google.", Toast.LENGTH_SHORT).show();
-            } else if (e instanceof NoAvailableCredentialsException) {
-                Toast.makeText(this, "Nenhuma credencial Google disponível.", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Falha ao obter credencial.", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Log.e(TAG, "Erro inesperado.", e);
-            Toast.makeText(this, "Erro inesperado no login.", Toast.LENGTH_LONG).show();
-        }
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        updateUI(user);
+                    } else {
+                        Log.w(TAG, "signInWithCredential:failure", task.getException());
+                        updateUI(null);
+                    }
+                });
     }
 
-    private void updateUI(String email, String displayName) {
-        if (email != null) {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            intent.putExtra("user_email", email);
-            intent.putExtra("user_display_name", displayName);
-            startActivity(intent);
+    private void updateUI(FirebaseUser user) {
+        if (user != null) {
+            Toast.makeText(this, "Login bem-sucedido: " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
         }
     }
-
-    // Se você quiser criar credenciais para primeiro login (não obrigatório nesta etapa)
-    private ActivityResultLauncher<?> createCredentialLauncher;
 }

@@ -12,7 +12,12 @@
           "package_name": "com.example.finalsprintproj_fast4u"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "149287078485-tgm0i4are75co9t883bqjlieu1lbc5at.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA6FnIIbHYGnfZeYyK3rb4oc_3N9X0QMEs"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "149287078485-tgm0i4are75co9t883bqjlieu1lbc5at.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
