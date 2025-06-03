@@ -1,6 +1,7 @@
 package com.example.finalsprintproj_fast4u;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -84,9 +85,18 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser user) {
+        String userName;
+        Uri photoUrl;
+
         if (user != null) {
             Toast.makeText(this, "Login bem-sucedido: " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            userName = user.getDisplayName();
+            photoUrl = user.getPhotoUrl();
+            Intent userData = new Intent(this, FoodMenuActivity.class);
+            userData.putExtra("user-app-name", userName);
+            userData.putExtra("user-app-photo", photoUrl);
+            startActivity(userData);
+            startActivity(new Intent(LoginActivity.this, FoodMenuActivity.class));
             finish();
         }
     }
