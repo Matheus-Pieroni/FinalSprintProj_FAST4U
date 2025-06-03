@@ -26,7 +26,7 @@ public class FoodMenuActivity extends MainActivity {
         String userName = userData.getStringExtra("user-app-name");
 
 //Loading the image >>
-        if (userPhoto != null && !userPhoto.isEmpty()) {
+        if (userPhoto != null) {
             Glide.with(this)
                     .load(userPhoto)
                     .into(img);
