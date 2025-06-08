@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "149287078485-vk04e1d3o59tgnvgnagb8l0givb1dmab.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.finalsprintproj_fast4u",
+            "certificate_hash": "68cff5797ece0126d686e301911a215ef26de162"
+          }
+        },
+        {
           "client_id": "149287078485-tgm0i4are75co9t883bqjlieu1lbc5at.apps.googleusercontent.com",
           "client_type": 3
         }

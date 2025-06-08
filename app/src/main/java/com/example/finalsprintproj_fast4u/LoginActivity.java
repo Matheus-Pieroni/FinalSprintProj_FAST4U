@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.signin.*;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.*;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -90,12 +91,15 @@ public class LoginActivity extends AppCompatActivity {
 
         if (user != null) {
             Toast.makeText(this, "Login bem-sucedido: " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-            userName = user.getDisplayName();
-            photoUrl = user.getPhotoUrl();
-            Intent userData = new Intent(this, FoodMenuActivity.class);
+            userName = user.getDisplayName(); // Isso aqui ta beleza
+            photoUrl = user.getPhotoUrl(); // Isso aqui ta beleza
+
+            // Isso aqui em baixo não funciona direito!!!
+            // Preciso remontar o Intent de dados do usuário ou receber os dados na nova activity (O Food alguma coisa)
+            /*Intent userData = new Intent(this, FoodMenuActivity.class);
             userData.putExtra("user-app-name", userName);
             userData.putExtra("user-app-photo", photoUrl);
-            startActivity(userData);
+            startActivity(userData);*/
             startActivity(new Intent(LoginActivity.this, FoodMenuActivity.class));
             finish();
         }
