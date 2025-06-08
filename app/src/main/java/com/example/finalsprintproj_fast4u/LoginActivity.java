@@ -13,8 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.auth.api.signin.*;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Firebase;
 import com.google.firebase.auth.*;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -25,20 +25,18 @@ public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private Button signInButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-
-        // Botão
         signInButton = findViewById(R.id.signInButton);
 
-        // Configurar Google Sign-In
+        // Configura o cliente Google
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id)) // Copie do google-services.json
+                .requestIdToken(getString(R.string.default_web_client_id)) // vem do google-services.json
                 .requestEmail()
                 .build();
 
@@ -61,7 +59,11 @@ public class LoginActivity extends AppCompatActivity {
 
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account.getIdToken());
+                if (account != null) {
+                    firebaseAuthWithGoogle(account.getIdToken(), account);
+                } else {
+                    Toast.makeText(this, "Conta do Google inválida.", Toast.LENGTH_SHORT).show();
+                }
 
             } catch (ApiException e) {
                 Log.w(TAG, "Erro no Google sign in", e);
@@ -70,7 +72,21 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void firebaseAuthWithGoogle(String idToken) {
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            Intent userData = new Intent(this, FoodMenuActivity.class);
+            userData.putExtra("user-app-name", user.getDisplayName());
+            userData.putExtra("user-app-photo", user.getPhotoUrl());
+            startActivity(userData);
+            finish();
+        }
+    }
+
+    private void firebaseAuthWithGoogle(String idToken, GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
 
         mAuth.signInWithCredential(credential)
@@ -86,22 +102,24 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUI(FirebaseUser user) {
-        String userName;
-        Uri photoUrl;
-
         if (user != null) {
-            Toast.makeText(this, "Login bem-sucedido: " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
-            userName = user.getDisplayName(); // Isso aqui ta beleza
-            photoUrl = user.getPhotoUrl(); // Isso aqui ta beleza
-
-            // Isso aqui em baixo não funciona direito!!!
-            // Preciso remontar o Intent de dados do usuário ou receber os dados na nova activity (O Food alguma coisa)
-            /*Intent userData = new Intent(this, FoodMenuActivity.class);
-            userData.putExtra("user-app-name", userName);
-            userData.putExtra("user-app-photo", photoUrl);
-            startActivity(userData);*/
-            startActivity(new Intent(LoginActivity.this, FoodMenuActivity.class));
-            finish();
+            // Envia os dados do usuário para a próxima tela
+            Intent userData = new Intent(this, FoodMenuActivity.class);
+            userData.putExtra("user-app-name", user.getDisplayName());
+            userData.putExtra("user-app-photo", user.getPhotoUrl()); // Uri é parcelable
+            startActivity(userData);
+            finish(); // Finaliza a tela de login
+        } else {
+            Toast.makeText(this, "Falha ao autenticar com Firebase", Toast.LENGTH_SHORT).show();
         }
     }
+
+    // NÃO FAÇA logout no onDestroy, ou ele sempre voltará para login
+    /*
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mAuth.signOut(); // Removido para manter o login
+    }
+    */
 }
