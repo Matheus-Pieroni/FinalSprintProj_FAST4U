@@ -55,7 +55,8 @@ public class FoodMenuActivity extends AppCompatActivity {
         hamburgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent hamIntent = new Intent();
+                Intent hamIntent = new Intent(FoodMenuActivity.this, PreferenceActivity.class);
+                hamIntent.putExtra("pref_food", "hamb");
                 finish();
             }
         });
@@ -63,7 +64,8 @@ public class FoodMenuActivity extends AppCompatActivity {
         pizzabtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent pizIntent = new Intent();
+                Intent pizIntent = new Intent(FoodMenuActivity.this, PreferenceActivity.class);
+                pizIntent.putExtra("pref_food", "pizz");
                 finish();
             }
         });
@@ -71,7 +73,8 @@ public class FoodMenuActivity extends AppCompatActivity {
         docesbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent doceIntent = new Intent();
+                Intent doceIntent = new Intent(FoodMenuActivity.this, PreferenceActivity.class);
+                doceIntent.putExtra("pref_food", "doce");
                 finish();
             }
         });
@@ -79,7 +82,8 @@ public class FoodMenuActivity extends AppCompatActivity {
         salgadbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent salgadIntent = new Intent();
+                Intent salgadIntent = new Intent(FoodMenuActivity.this, PreferenceActivity.class);
+                salgadIntent.putExtra("pref_food", "salg");
                 finish();
             }
         });
@@ -87,7 +91,8 @@ public class FoodMenuActivity extends AppCompatActivity {
         japabtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent japaIntent = new Intent();
+                Intent japaIntent = new Intent(FoodMenuActivity.this, PreferenceActivity.class);
+                japaIntent.putExtra("pref_food", "japa");
                 finish();
             }
         });
