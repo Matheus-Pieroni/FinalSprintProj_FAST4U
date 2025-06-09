@@ -3,24 +3,38 @@ package com.example.finalsprintproj_fast4u;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
 
-public class FoodMenuActivity extends MainActivity {
-
+public class FoodMenuActivity extends AppCompatActivity {
     ImageView img;
+
+    ImageView hamburgbtn;
+    ImageView pizzabtn;
+    ImageView docesbtn;
+    ImageView japabtn;
+    ImageView salgadbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
 
+        //Instanciando os objetos a serem utilizados (ou coisas já nem sei mais)
         img = findViewById(R.id.userPhoto);
         TextView userText = findViewById(R.id.userText);
+        hamburgbtn = findViewById(R.id.hamburgbtn);
+        salgadbtn = findViewById(R.id.salgadbtn);
+        docesbtn = findViewById(R.id.docesbtn);
+        japabtn = findViewById(R.id.japabtn);
+        pizzabtn = findViewById(R.id.pizzabtn);
 
-        //recebendo as
+        //recebendo as coisinhas
         Intent userData = getIntent();
         Uri userPhoto = userData.getParcelableExtra("user-app-photo");
         String userName = userData.getStringExtra("user-app-name");
@@ -35,5 +49,52 @@ public class FoodMenuActivity extends MainActivity {
         if (userName != null && !userName.isEmpty()) {
             userText.setText(userName);
         }
+
+
+        //Aqui começa a desgraça -->>   :D
+        hamburgbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent hamIntent = new Intent(FoodMenuActivity.this, PreferenceActivity.class);
+                hamIntent.putExtra("pref_food", "hamb");
+                finish();
+            }
+        });
+
+        pizzabtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pizIntent = new Intent(FoodMenuActivity.this, PreferenceActivity.class);
+                pizIntent.putExtra("pref_food", "pizz");
+                finish();
+            }
+        });
+
+        docesbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent doceIntent = new Intent(FoodMenuActivity.this, PreferenceActivity.class);
+                doceIntent.putExtra("pref_food", "doce");
+                finish();
+            }
+        });
+
+        salgadbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent salgadIntent = new Intent(FoodMenuActivity.this, PreferenceActivity.class);
+                salgadIntent.putExtra("pref_food", "salg");
+                finish();
+            }
+        });
+
+        japabtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent japaIntent = new Intent(FoodMenuActivity.this, PreferenceActivity.class);
+                japaIntent.putExtra("pref_food", "japa");
+                finish();
+            }
+        });
     }
 }

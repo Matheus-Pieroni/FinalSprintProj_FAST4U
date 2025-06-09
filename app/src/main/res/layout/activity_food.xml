@@ -5,31 +5,211 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D80000"
-    android:backgroundTint="#D80000"
-    >
+    android:backgroundTint="#D80000">
 
-    <ImageView
-        android:id="@+id/userPhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="463dp"
+        android:layout_height="81dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="0.0">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView3"
+            android:layout_width="86dp"
+            android:layout_height="83dp"
+            android:layout_marginStart="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/Circular"
+            app:srcCompat="@drawable/main_icon" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/userPhoto"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_marginEnd="40dp"
+            android:maxWidth="50dp"
+            android:maxHeight="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.466"
+            app:shapeAppearanceOverlay="@style/Circular"
+            tools:srcCompat="@tools:sample/avatars" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/userText"
-        android:layout_width="15dp"
-        android:layout_height="17dp"
-        android:text="null"
-        android:textColor="@color/azure"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:layout_width="166dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="24dp"
+        android:text="userName"
+        android:fontFamily="@font/adlamdisp"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userPhoto"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Escolha sua categoria preferida"
+        android:textColor="@color/aliceblue"
+        android:textSize="22sp"
+        android:fontFamily="@font/adlamdisp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/pizzabtn"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintStart_toEndOf="@+id/hamburgbtn"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:srcCompat="@drawable/piza" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/docesbtn"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="72dp"
+        android:background="@color/antiquewhite"
+        android:backgroundTint="@color/antiquewhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hamburgbtn"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:srcCompat="@drawable/cupkak" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/japabtn"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="420dp"
+        android:background="@color/antiquewhite"
+        android:backgroundTint="@color/antiquewhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:srcCompat="@drawable/sushi" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/salgadbtn"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="72dp"
+        android:background="@color/antiquewhite"
+        android:backgroundTint="@color/antiquewhite"
+        android:fontFamily="@font/adlamdisp"
+        app:layout_constraintStart_toEndOf="@+id/docesbtn"
+        app:layout_constraintTop_toBottomOf="@+id/pizzabtn"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:srcCompat="@drawable/salgad" />
+
+    <TextView
+        android:id="@+id/Hamburgtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="49dp"
+        android:fontFamily="@font/adlamdisp"
+        android:text="Lanches"
+        android:textColor="@color/aliceblue"
+        app:layout_constraintBottom_toBottomOf="@+id/hamburgbtn"
+        app:layout_constraintEnd_toStartOf="@+id/pizzabtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/hamburgbtn"
+        app:layout_constraintTop_toTopOf="@+id/hamburgbtn"
+        app:layout_constraintVertical_bias="0.491" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/hamburgbtn"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="120dp"
+        android:background="@color/antiquewhite"
+        android:backgroundTint="@color/antiquewhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:srcCompat="@drawable/hamburg" />
+
+    <TextView
+        android:id="@+id/Pizzatxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/adlamdisp"
+        android:text="Pizzas"
+        android:textColor="@color/aliceblue"
+        app:layout_constraintBottom_toBottomOf="@+id/pizzabtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/pizzabtn"
+        app:layout_constraintTop_toTopOf="@+id/pizzabtn"
+        app:layout_constraintVertical_bias="0.491" />
+
+    <TextView
+        android:id="@+id/Docetxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/adlamdisp"
+        android:text="Doces"
+        android:textColor="@color/aliceblue"
+        app:layout_constraintBottom_toBottomOf="@+id/docesbtn"
+        app:layout_constraintEnd_toStartOf="@+id/salgadbtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/docesbtn"
+        app:layout_constraintTop_toTopOf="@+id/docesbtn"
+        app:layout_constraintVertical_bias="0.475" />
+
+    <TextView
+        android:id="@+id/Salgadtxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/adlamdisp"
+        android:text="Salgados"
+        android:textColor="@color/aliceblue"
+        app:layout_constraintBottom_toBottomOf="@+id/salgadbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/salgadbtn"
+        app:layout_constraintTop_toTopOf="@+id/salgadbtn"
+        app:layout_constraintVertical_bias="0.491" />
+
+    <TextView
+        android:id="@+id/JapImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:fontFamily="@font/adlamdisp"
+        android:text="Japonesa"
+        android:textColor="@color/aliceblue"
+        app:layout_constraintBottom_toBottomOf="@+id/japabtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/japabtn"
+        app:layout_constraintTop_toTopOf="@+id/japabtn"
+        app:layout_constraintVertical_bias="0.475" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
