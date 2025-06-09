@@ -13,7 +13,6 @@ import com.bumptech.glide.Glide;
 
 public class FoodMenuActivity extends AppCompatActivity {
     ImageView img;
-
     ImageView hamburgbtn;
     ImageView pizzabtn;
     ImageView docesbtn;
@@ -45,18 +44,19 @@ public class FoodMenuActivity extends AppCompatActivity {
                     .load(userPhoto)
                     .into(img);
         }
-
         if (userName != null && !userName.isEmpty()) {
             userText.setText(userName);
         }
 
+        Intent prefFoodIntent = new Intent(FoodMenuActivity.this, PreferenceActivity.class);
 
         //Aqui começa a desgraça -->>   :D
         hamburgbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent hamIntent = new Intent(FoodMenuActivity.this, PreferenceActivity.class);
-                hamIntent.putExtra("pref_food", "hamb");
+                prefFoodIntent.removeExtra("pref_food");
+                prefFoodIntent.putExtra("pref_food", "hamb");
+                startActivity(prefFoodIntent);
                 finish();
             }
         });
@@ -64,8 +64,9 @@ public class FoodMenuActivity extends AppCompatActivity {
         pizzabtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent pizIntent = new Intent(FoodMenuActivity.this, PreferenceActivity.class);
-                pizIntent.putExtra("pref_food", "pizz");
+                prefFoodIntent.removeExtra("pref_food");
+                prefFoodIntent.putExtra("pref_food", "pizz");
+                startActivity(prefFoodIntent);
                 finish();
             }
         });
@@ -73,8 +74,9 @@ public class FoodMenuActivity extends AppCompatActivity {
         docesbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent doceIntent = new Intent(FoodMenuActivity.this, PreferenceActivity.class);
-                doceIntent.putExtra("pref_food", "doce");
+                prefFoodIntent.removeExtra("pref_food");
+                prefFoodIntent.putExtra("pref_food", "doce");
+                startActivity(prefFoodIntent);
                 finish();
             }
         });
@@ -82,8 +84,9 @@ public class FoodMenuActivity extends AppCompatActivity {
         salgadbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent salgadIntent = new Intent(FoodMenuActivity.this, PreferenceActivity.class);
-                salgadIntent.putExtra("pref_food", "salg");
+                prefFoodIntent.removeExtra("pref_food");
+                prefFoodIntent.putExtra("pref_food", "salg");
+                startActivity(prefFoodIntent);
                 finish();
             }
         });
@@ -91,8 +94,9 @@ public class FoodMenuActivity extends AppCompatActivity {
         japabtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent japaIntent = new Intent(FoodMenuActivity.this, PreferenceActivity.class);
-                japaIntent.putExtra("pref_food", "japa");
+                prefFoodIntent.removeExtra("pref_food");
+                prefFoodIntent.putExtra("pref_food", "japa");
+                startActivity(prefFoodIntent);
                 finish();
             }
         });

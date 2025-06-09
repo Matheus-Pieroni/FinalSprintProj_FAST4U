@@ -66,15 +66,75 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="92dp"
-            android:layout_marginTop="204dp"
+            android:id="@+id/foodOpt1"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="188dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.108"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintVertical_bias="0.035"
             app:shapeAppearanceOverlay="@style/Circular"
             tools:srcCompat="@tools:sample/avatars" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/foodOpt2"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.098"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/foodOpt1"
+            app:shapeAppearanceOverlay="@style/Circular"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/txtFirstTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="88dp"
+            android:fontFamily="@font/adlamdisp"
+            android:text="Escolha um fornecedor parceiro"
+            android:textAlignment="center"
+            android:textColor="@color/azure"
+            android:textSize="22sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@+id/foodOpt1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/foodOptTxt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="foodOptTxt1"
+            android:fontFamily="@font/adlamdisp"
+            android:textColor="@color/azure"
+            app:layout_constraintBottom_toBottomOf="@+id/foodOpt1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.101"
+            app:layout_constraintStart_toEndOf="@+id/foodOpt1"
+            app:layout_constraintTop_toTopOf="@+id/foodOpt1" />
+
+        <TextView
+            android:id="@+id/foodOptTxt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="foodOptText2"
+            android:textColor="@color/azure"
+            android:fontFamily="@font/adlamdisp"
+            app:layout_constraintBottom_toBottomOf="@+id/foodOpt2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.115"
+            app:layout_constraintStart_toEndOf="@+id/foodOpt2"
+            app:layout_constraintTop_toTopOf="@+id/foodOpt2"
+            app:layout_constraintVertical_bias="0.481" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
