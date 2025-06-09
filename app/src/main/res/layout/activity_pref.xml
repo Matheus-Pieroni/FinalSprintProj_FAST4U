@@ -48,22 +48,22 @@
                 app:layout_constraintVertical_bias="0.466"
                 app:shapeAppearanceOverlay="@style/Circular"
                 tools:srcCompat="@tools:sample/avatars" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/userText"
-            android:layout_width="166dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="156dp"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/adlamdisp"
-            android:text="userName"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="18dp"
-            android:textStyle="italic"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/userText"
+                android:layout_width="166dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="156dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/adlamdisp"
+                android:text="userName"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/foodOpt1"
@@ -113,28 +113,65 @@
             android:id="@+id/foodOptTxt1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="foodOptTxt1"
             android:fontFamily="@font/adlamdisp"
+            android:text="foodOptTxt1"
             android:textColor="@color/azure"
             app:layout_constraintBottom_toBottomOf="@+id/foodOpt1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.101"
+            app:layout_constraintHorizontal_bias="0.098"
             app:layout_constraintStart_toEndOf="@+id/foodOpt1"
-            app:layout_constraintTop_toTopOf="@+id/foodOpt1" />
+            app:layout_constraintTop_toTopOf="@+id/foodOpt1"
+            app:layout_constraintVertical_bias="0.301" />
 
         <TextView
             android:id="@+id/foodOptTxt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/adlamdisp"
             android:text="foodOptText2"
             android:textColor="@color/azure"
-            android:fontFamily="@font/adlamdisp"
             app:layout_constraintBottom_toBottomOf="@+id/foodOpt2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.115"
+            app:layout_constraintHorizontal_bias="0.121"
             app:layout_constraintStart_toEndOf="@+id/foodOpt2"
             app:layout_constraintTop_toTopOf="@+id/foodOpt2"
-            app:layout_constraintVertical_bias="0.481" />
+            app:layout_constraintVertical_bias="0.301" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/subsBtn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/custom_btn"
+            android:backgroundTint="@color/lightcoral"
+            android:fontFamily="@font/adlamdisp"
+            android:text="Assine Já"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@+id/foodOptTxt2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/foodOpt1"
+            app:layout_constraintTop_toBottomOf="@+id/foodOptTxt1"
+            app:layout_constraintVertical_bias="0.079" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/subsBtn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/custom_btn"
+            android:backgroundTint="@color/lightcoral"
+            android:fontFamily="@font/adlamdisp"
+            android:text="Assine Já"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/foodOpt2"
+            app:layout_constraintTop_toBottomOf="@+id/foodOptTxt2"
+            app:layout_constraintVertical_bias="0.085" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

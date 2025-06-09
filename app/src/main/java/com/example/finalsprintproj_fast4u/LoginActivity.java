@@ -1,7 +1,6 @@
 package com.example.finalsprintproj_fast4u;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -13,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.auth.api.signin.*;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.Firebase;
 import com.google.firebase.auth.*;
 
 public class LoginActivity extends AppCompatActivity {
@@ -72,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    //Método logo obsoleto, NÃO SE DEVE PASSAR INFORMAÇÕES DE USUÁRIO POR INTENT'S ENTENDEU?!??!??
     @Override
     protected void onStart() {
         super.onStart();

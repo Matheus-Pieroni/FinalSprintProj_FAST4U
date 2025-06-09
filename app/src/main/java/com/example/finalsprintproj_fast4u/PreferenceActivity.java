@@ -3,6 +3,8 @@ package com.example.finalsprintproj_fast4u;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.google.firebase.Firebase;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,6 +28,8 @@ public class PreferenceActivity extends AppCompatActivity {
     TextView foodOptTxt2;
     TextView userText;
     String userName;
+    Button subsBtn1;
+    Button subsBtn2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,6 +45,8 @@ public class PreferenceActivity extends AppCompatActivity {
         foodOpt2 = findViewById(R.id.foodOpt2);
         foodOptTxt1 = findViewById(R.id.foodOptTxt1);
         foodOptTxt2 = findViewById(R.id.foodOptTxt2);
+        subsBtn1 = findViewById(R.id.subsBtn1);
+        subsBtn2 = findViewById(R.id.subsBtn2);
 
         //Definindo os links para as imagens ->>
         String hamb1 = "https://yt3.googleusercontent.com/m2N3G5IuofYk3Lld7t1jKxUMrJZzpYLul6P0nE-MGKmLKN7qvC6Ocf8YMKw6UEXmaO8wVa2Dvck=s900-c-k-c0x00ffffff-no-rj";
@@ -74,8 +79,8 @@ public class PreferenceActivity extends AppCompatActivity {
             return;
         }
 
-/* Obsoleto?
-Loading the user image >>
+    /* Obsoleto
+       Loading the user image >>
         if (userPhoto != null) {
             Glide.with(this)
                     .load(userPhoto)
@@ -118,7 +123,7 @@ Loading the user image >>
                 Glide.with(this)
                         .load(hamb2)
                         .into(foodOpt2);
-                foodOptTxt2.setText("BurgarKingu");
+                foodOptTxt2.setText("BurgerKing");
                 break;
             case "salg":
                 Glide.with(this)
@@ -177,5 +182,34 @@ Loading the user image >>
                         .into(foodOpt2);
                 foodOptTxt2.setText("ERRO");
         }
+        subsBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPurchase = new Intent(PreferenceActivity.this, PurchaseActivity.class);
+                startActivity(intentPurchase);
+                finish();
+            }
+        });
+
+        subsBtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPurchase = new Intent(PreferenceActivity.this, PurchaseActivity.class);
+                startActivity(intentPurchase);
+                finish();
+            }
+        });
+    }
+    //Só para retornar corretamente à pagina inicial.
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        goBack();
+    }
+
+    public void goBack() {
+        Intent backIntent = new Intent(this, FoodMenuActivity.class);
+        startActivity(backIntent);
+        finish();
     }
 }

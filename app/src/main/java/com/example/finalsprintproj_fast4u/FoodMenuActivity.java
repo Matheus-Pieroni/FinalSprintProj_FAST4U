@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class FoodMenuActivity extends AppCompatActivity {
     ImageView img;
@@ -33,10 +34,10 @@ public class FoodMenuActivity extends AppCompatActivity {
         japabtn = findViewById(R.id.japabtn);
         pizzabtn = findViewById(R.id.pizzabtn);
 
-        //recebendo as coisinhas
-        Intent userData = getIntent();
-        Uri userPhoto = userData.getParcelableExtra("user-app-photo");
-        String userName = userData.getStringExtra("user-app-name");
+        //Essa intent
+        //Intent userData = getIntent();
+        Uri userPhoto = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl();
+        String userName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
 
 //Loading the image >>
         if (userPhoto != null) {
@@ -100,5 +101,15 @@ public class FoodMenuActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    //Só para retornar corretamente à pagina inicial.
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        goBack();
+    }
+
+    public void goBack() {
+        finishAffinity();
     }
 }
