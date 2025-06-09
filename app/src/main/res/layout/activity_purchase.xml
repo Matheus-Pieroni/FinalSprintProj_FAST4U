@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="#D80000"
     android:backgroundTint="#D80000">
 
@@ -67,38 +67,127 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="DETALHES DO PAGAMENTO"
         android:fontFamily="@font/adlamdisp"
-        android:textStyle="italic"
-        android:textSize="24sp"
+        android:text="DETALHES DO PAGAMENTO"
         android:textColor="@color/azure"
+        android:textSize="24sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/paymentDetailsTtl2"
-        android:layout_width="239dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="168dp"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="172dp"
         android:fontFamily="@font/adlamdisp"
         android:text="Nome do Cartão"
         android:textColor="@color/azure"
         android:textSize="24sp"
+        android:gravity="center"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.267"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
+    <TextView
+        android:id="@+id/paymentDetailsTtl3"
+        android:layout_width="239dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="76dp"
+        android:fontFamily="@font/adlamdisp"
+        android:gravity="center"
+        android:text="Número do Cartão"
+        android:textColor="@color/azure"
+        android:textSize="24sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.273"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNAMCARD" />
+
     <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/editTextNCARD2"
+        android:layout_width="241dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
+        android:fontFamily="@font/adlamdisp"
+        android:inputType="number"
+        android:text="Digite Aqui (SEM ESPAÇOS)"
+        android:textColor="@color/azure"
+        android:gravity="center"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/paymentDetailsTtl3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/paymentDetailsTtl3"
+        app:layout_constraintTop_toBottomOf="@+id/paymentDetailsTtl3" />
+
+    <TextView
+        android:id="@+id/paymentDetailsTtl4"
+        android:layout_width="239dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="76dp"
+        android:fontFamily="@font/adlamdisp"
+        android:gravity="center"
+        android:text="Número do Cartão"
+        android:textColor="@color/azure"
+        android:textSize="24sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.267"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNCARD2" />
+
+    <EditText
+        android:id="@+id/editTextNAMCARD"
+        android:layout_width="242dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:fontFamily="@font/adlamdisp"
         android:inputType="text"
-        android:text="Name"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="297dp" />
+        android:text="Digite Aqui"
+        android:gravity="center"
+        android:textColor="@color/azure"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/paymentDetailsTtl2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/paymentDetailsTtl2"
+        app:layout_constraintTop_toBottomOf="@+id/paymentDetailsTtl2" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="246dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:fontFamily="@font/adlamdisp"
+        android:inputType="date"
+        android:text="00/00/0000"
+        android:textColor="@color/azure"
+        app:layout_constraintTop_toBottomOf="@+id/paymentDetailsTtl4"
+        tools:layout_editor_absoluteX="46dp"
+        android:gravity="center"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:text="Enviar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.953"
+        android:textStyle="italic"
+        android:fontFamily="@font/adlamdisp"
+        android:background="@drawable/custom_btn"
+        android:backgroundTint="@color/lightcoral"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
