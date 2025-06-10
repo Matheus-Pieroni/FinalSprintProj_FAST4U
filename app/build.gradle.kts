@@ -11,7 +11,7 @@ android {
         applicationId = "com.example.finalsprintproj_fast4u"
         minSdk = 28
         versionCode = 1
-        versionName = "0.8.5"
+        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

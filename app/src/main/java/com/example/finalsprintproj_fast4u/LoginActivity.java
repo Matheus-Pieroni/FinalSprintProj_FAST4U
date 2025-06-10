@@ -70,18 +70,39 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    //Método logo obsoleto, NÃO SE DEVE PASSAR INFORMAÇÕES DE USUÁRIO POR INTENT'S ENTENDEU?!??!??
+    //Métodos obsoletos utilizando Intent's foram mantidos para razões didáticas
+    //NÃO SE DEVE PASSAR INFORMAÇÕES DE USUÁRIO POR INTENT'S ENTENDEU?!??!??
     @Override
     protected void onStart() {
         super.onStart();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
+            //Adoraria receber a nova classe UserData aqui...       ;)
+            //                     |
+            //                     V
+
+            //recebo as informações
+            String userDataEmail = user.getEmail();
+            String userDataName = user.getDisplayName();
+
+            //Crio um novo objeto do tipo UserData() -- Serve para coleta de dados somente.
+            UserInfo userdata1 = new UserInfo();
+
+            //Assimilo ao novo objeto dois valores, utilizando o construtor vazio.
+            userdata1.setNome(userDataName);
+            userdata1.setEmail(userDataEmail);
+
+            //Repasso as informações em forma de intent, o que já foi inutilizado.
+            //Mantido por razões didáticas.
+
+            /*
             Intent userData = new Intent(this, FoodMenuActivity.class);
             userData.putExtra("user-app-name", user.getDisplayName());
             userData.putExtra("user-app-photo", user.getPhotoUrl());
             startActivity(userData);
             finish();
+             */
         }
     }
 
@@ -100,25 +121,15 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
+
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            // Envia os dados do usuário para a próxima tela
+            // Envia o usuário para a próxima tela.
             Intent userData = new Intent(this, FoodMenuActivity.class);
-            userData.putExtra("user-app-name", user.getDisplayName());
-            userData.putExtra("user-app-photo", user.getPhotoUrl()); // Uri é parcelable
             startActivity(userData);
             finish(); // Finaliza a tela de login
         } else {
             Toast.makeText(this, "Falha ao autenticar com Firebase", Toast.LENGTH_SHORT).show();
         }
     }
-
-    // NÃO FAÇA logout no onDestroy, ou ele sempre voltará para login
-    /*
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mAuth.signOut(); // Removido para manter o login
-    }
-    */
 }

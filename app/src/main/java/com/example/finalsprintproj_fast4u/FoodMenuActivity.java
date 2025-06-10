@@ -34,7 +34,7 @@ public class FoodMenuActivity extends AppCompatActivity {
         japabtn = findViewById(R.id.japabtn);
         pizzabtn = findViewById(R.id.pizzabtn);
 
-        //Essa intent
+        //Essa intent foi INUTILIZADA, TEM MEIOS MELHORES DE CONSEGUIR ESSES DADOS!!!
         //Intent userData = getIntent();
         Uri userPhoto = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl();
         String userName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
