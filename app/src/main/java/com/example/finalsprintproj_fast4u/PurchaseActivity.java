@@ -114,7 +114,7 @@ public class PurchaseActivity extends AppCompatActivity {
                         Toast.makeText(PurchaseActivity.this, "ERRO: Mês inválido", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    if (ano < 2025) {
+                    if (ano < 2025 || ano > 2080) {
                         Toast.makeText(PurchaseActivity.this, "ERRO: Ano inválido", Toast.LENGTH_SHORT).show();
                         return;
                     }

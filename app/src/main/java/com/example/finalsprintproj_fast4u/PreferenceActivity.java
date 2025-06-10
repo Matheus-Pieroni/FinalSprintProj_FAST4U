@@ -39,6 +39,9 @@ public class PreferenceActivity extends AppCompatActivity {
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
+        mAuth = FirebaseAuth.getInstance();
+
+
         img = findViewById(R.id.userPhoto);
         userText = findViewById(R.id.userText);
         foodOpt1 = findViewById(R.id.foodOpt1);
@@ -62,7 +65,6 @@ public class PreferenceActivity extends AppCompatActivity {
         String erro1 = "https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-512.png";
 
         FirebaseApp.initializeApp(this);
-        mAuth = FirebaseAuth.getInstance();
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
 

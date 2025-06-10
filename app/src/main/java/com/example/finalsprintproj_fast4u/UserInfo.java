@@ -10,16 +10,18 @@ public class UserInfo implements Serializable {
     private String email;
     private String popName;
     private Uri photoUrl;
+    private String userAddress;
     private String prefFood;
     private String buyMethod;
 
     //Construtor genérico do Objeto cliente / Data do Usuário
-    public UserInfo(String email, String popName, Uri photoUrl, String prefFood, String buyMethod) {
+    public UserInfo(String email, String popName, Uri photoUrl, String prefFood, String buyMethod, String userAddress) {
         this.email = email;
         this.popName = popName;
         this.photoUrl = photoUrl;
         this.prefFood = prefFood;
         this.buyMethod = buyMethod;
+        this.userAddress = userAddress;
     }
 
     //Construtor vazio  :O
@@ -33,6 +35,8 @@ public class UserInfo implements Serializable {
     public String getNome() {
         return this.popName;
     }
+    public void setUserAddress(String userAddress) {this.userAddress = userAddress; }
+    public String getUserAddress() {return this.userAddress; }
     public void setEmail(String email) {
         this.email = email;
     }

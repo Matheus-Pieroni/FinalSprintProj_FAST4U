@@ -3,6 +3,7 @@ package com.example.finalsprintproj_fast4u;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
     private Button signInButton;
+    Button createAccBtn;
 
 
     @Override
@@ -31,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         signInButton = findViewById(R.id.signInButton);
+        createAccBtn = findViewById(R.id.createAccBtn);
 
         // Configura o cliente Google
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -41,6 +44,15 @@ public class LoginActivity extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         signInButton.setOnClickListener(view -> signIn());
+
+        createAccBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent createAccPage = new Intent(LoginActivity.this, CreateAccountActivity.class);
+                startActivity(createAccPage);
+                finish();
+            }
+        });
     }
 
     private void signIn() {
