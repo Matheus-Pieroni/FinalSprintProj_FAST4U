@@ -40,10 +40,25 @@ public class CreateAccountActivity extends AppCompatActivity implements Serializ
         UserInfo user1 = new UserInfo();
         //Começa aqui a verificação para criação de usuário, que deverá ser passado atráves de uma intent com a tag "Serializable"
 
+        /*
+
+        Aqui temos o problema.
+        Teoricamente eu terei que passar algum tipo de informação contido no login do google,
+        ou forçar que a requisição das informações relacionadas ao login do google sejam condicionais.
+
+        O que causa o erro na versão atual (versão até o dia 06/09/2025) é a procura de um "argumento" via uma função,
+        este é retornado como nulo, que é o que causa o erro da versão em que nos encontramos.
+
+        Precisamos isolar a chamada da função.      (sim estou falando comigo mesmo. >:3 )
+
+         */
+
 
         createAccBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 //Crio um novo usuário local.
 
                 if (!userNameTxt.getText().toString().isEmpty() || userNameTxt.getText() != null) {
@@ -73,7 +88,7 @@ public class CreateAccountActivity extends AppCompatActivity implements Serializ
             }
         });
 
-// (opcional) capturar seleção {Totalmente necessário}
+        // (opcional) capturar seleção {Totalmente necessário}
         userTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -86,12 +101,26 @@ public class CreateAccountActivity extends AppCompatActivity implements Serializ
             }
         });
     }
-    public boolean spinnerCheck(String owo) {
+    public boolean spinnerCheck(String owo) { //kkkkkkkkkk eu to ficando maluco
         if (owo.isEmpty()) {
             Toast.makeText(this, "Dia Inválido ou Não Selecionado!", Toast.LENGTH_SHORT).show();
             return false;
         } else {
             return true;
+        }
+    }
+
+    public void creationCompleted(UserInfo userinfo) {
+        if (userinfo.getNome() != null ) {
+            Intent userInfo = new Intent(CreateAccountActivity.this, FoodMenuActivity.class);
+            userInfo.putExtra("user-name", userNameTxt.getText().toString());
+            userInfo.putExtra("user-address", userLocalTxt.getText().toString());
+            userInfo.putExtra("user-email", userEmailTxt.getText().toString());
+            startActivity(userInfo);
+            finish();
+        } else {
+            Toast.makeText(CreateAccountActivity.this, "Usuário criado!", Toast.LENGTH_LONG).show();
+            return;
         }
     }
 
@@ -108,17 +137,4 @@ public class CreateAccountActivity extends AppCompatActivity implements Serializ
         finish();
     }
 
-    public void creationCompleted(UserInfo userinfo) {
-        if (userinfo.getNome() != null ) {
-            Intent userInfo = new Intent(CreateAccountActivity.this, FoodMenuActivity.class);
-            userInfo.putExtra("user-name", userNameTxt.getText().toString());
-            userInfo.putExtra("user-address", userLocalTxt.getText().toString());
-            userInfo.putExtra("user-email", userEmailTxt.getText().toString());
-            startActivity(userInfo);
-            finish();
-        } else {
-            Toast.makeText(CreateAccountActivity.this, "Usuário criado!", Toast.LENGTH_LONG).show();
-            return;
-        }
-    }
 }

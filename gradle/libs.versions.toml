@@ -1,5 +1,5 @@
 [versions]
-agp = "8.10.1"
+agp = "8.13.0"
 androidxCredentials = "1.2.0-alpha01"
 androidxCredentialsVersion = "1.5.0"
 androidxJunit = "1.2.1"

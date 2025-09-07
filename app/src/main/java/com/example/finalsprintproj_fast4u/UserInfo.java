@@ -55,16 +55,18 @@ public class UserInfo implements Serializable {
     public String getBuyMethod() {
         return this.buyMethod;
     }
+
+    //Essa função agora é útil já que estou ""hard codando"" (não, essa expressão não existe) o link da imagem.
+    public void setPhotoUri(Uri photoUrl) {
+        this.photoUrl = Uri.parse("https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_1280.png");
+    }
+
     /*
 
     Nenhum uso real para estes aqui.
 
                     |
                     V
-
-     public void setPhotoUri(String photoUrl) {
-        this.photoUrl = photoUrl;
-    }
     public String getPhotoUrl() {
         return this.photoUrl;
     }

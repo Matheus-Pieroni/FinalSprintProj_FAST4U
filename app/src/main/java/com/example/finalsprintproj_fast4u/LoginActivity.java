@@ -89,6 +89,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        //Isso aqui usa a memória persistente em cache para recuperar as informações de login.
+        //Não sei se vamos manter isso, queríamos que fosse possível fazer login de várias maneiras diferentes.
         if (user != null) {
             //Adoraria receber a nova classe UserData aqui...       ;)
             //                     |
@@ -118,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    //Login com o google.
     private void firebaseAuthWithGoogle(String idToken, GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
 
@@ -134,6 +138,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    //Se o login for efetuado, (ou já existir), o programa pula essa etapa.
+    //Uma observação importante - <strong>* ESSA FUNÇÃO SÓ OCORRE SE A INFORMAÇÃO "user" EXISTIR VIA GOOGLE *</strong>
     private void updateUI(FirebaseUser user) {
         if (user != null) {
             // Envia o usuário para a próxima tela.
