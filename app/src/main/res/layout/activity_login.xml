@@ -116,7 +116,7 @@
         android:id="@+id/createAccBtn"
         android:layout_width="180dp"
         android:layout_height="67dp"
-        android:background="@drawable/cstm_btn2"
+        android:background="@drawable/cstm_btn_deac"
         android:fontFamily="@font/adlamdisp"
         android:text="Criar uma Conta"
         android:textColor="@color/black"

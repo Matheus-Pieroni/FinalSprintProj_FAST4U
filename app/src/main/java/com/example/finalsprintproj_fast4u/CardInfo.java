@@ -2,6 +2,8 @@ package com.example.finalsprintproj_fast4u;
 
 import java.io.Serializable;
 
+
+//Por enquanto vamos manter essa classe inteira totalmente local. Não queremos que os dados dessa pessoa sejam vendidos na net.
 public class CardInfo implements Serializable {
     private String nomeDoCartao;
     private int numDoCartao;

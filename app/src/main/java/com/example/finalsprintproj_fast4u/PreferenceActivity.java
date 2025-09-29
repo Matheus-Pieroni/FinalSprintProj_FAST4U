@@ -35,7 +35,7 @@ public class PreferenceActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pref);
-        FirebaseApp.initializeApp(this); //Iniciando o serviço de autenticação.
+        //FirebaseApp.initializeApp(this); //Iniciando o serviço de autenticação.
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
@@ -64,7 +64,7 @@ public class PreferenceActivity extends AppCompatActivity {
         String japa2 = "https://play-lh.googleusercontent.com/mHUaPq-EwnR74PaP7if9N5lEZzzNxvnXk1FFBaU5hE2mwgOzg7qkYGh4UjoOxBiQzg";
         String erro1 = "https://cdn0.iconfinder.com/data/icons/shift-free/32/Error-512.png";
 
-        FirebaseApp.initializeApp(this);
+        //FirebaseApp.initializeApp(this);
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
 

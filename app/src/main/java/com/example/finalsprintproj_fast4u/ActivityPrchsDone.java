@@ -23,7 +23,7 @@ public class ActivityPrchsDone extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prchsdone);
-        FirebaseApp.initializeApp(this);
+        //FirebaseApp.initializeApp(ActivityPrchsDone.this);
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 

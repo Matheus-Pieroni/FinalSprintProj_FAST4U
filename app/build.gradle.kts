@@ -1,3 +1,8 @@
+/*val org.gradle.accessors.dm.LibrariesForLibs.FirebaseLibraryAccessors.admin: kotlin.Any;
+
+val org.gradle.api.provider.Provider<org.gradle.api.artifacts.MinimalExternalModuleDependency>.v3430: kotlin.Any;
+*/
+
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
@@ -11,7 +16,7 @@ android {
         applicationId = "com.example.finalsprintproj_fast4u"
         minSdk = 28
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -34,37 +39,31 @@ android {
 
 dependencies {
 
-    implementation(libs.glide)
-    implementation(platform(libs.firebase.bom))
+    // Use the newer Firebase BOM to manage all Firebase dependency versions
+    implementation(platform(libs.firebase.bom.v3430))
+
+    // Firebase Libraries
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.auth) // ESSENCIAL para login
+    implementation(libs.google.firebase.firestore)
 
-    implementation(libs.gms.play.services.auth) // Google Sign-In tradicional
+    // Google Sign-In and Credential Manager
+    // These are modern libraries for handling sign-in.
+    implementation(libs.gms.play.services.auth) // Google Sign-In
+    implementation(libs.credentials)
+    implementation(libs.credentials.play.services.auth)
+    implementation(libs.googleid)
+
+    // UI and Utility Libraries
     implementation(libs.appcompat)
-    implementation(libs.constraintlayout)
     implementation(libs.material)
-
-    // === Google Sign-In e Credential Manager ===
-    implementation(libs.credentials.v120)
-    implementation(libs.gms.play.services.auth) // v21.3.0
-    implementation(libs.credentials) // v1.2.0-alpha02
-    implementation(libs.credentials.play.services.auth) // v1.5.0
-    implementation(libs.googleid) // v1.1.1
-
-    // Firebase
-    implementation(platform(libs.firebase.bom)) // BoM v33.14.0
-    implementation(libs.firebase.analytics)
-
-    // UI
-    implementation(libs.appcompat) // v1.7.0
-    implementation(libs.material) // v1.12.0
-    implementation(libs.constraintlayout) // v2.2.1
-    implementation(libs.cardview) // v1.0.0
+    implementation(libs.constraintlayout)
+    implementation(libs.cardview)
+    implementation(libs.glide)
     implementation(libs.circleimageview)
-    implementation(libs.firebase.auth) // v3.1.0
 
-    // Testes
-    testImplementation(libs.junit) // v4.13.2
-    androidTestImplementation(libs.junit.v115) // v1.1.5
-    androidTestImplementation(libs.espresso.core.v351) // v3.5.1
+    // Test Libraries
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.junit.v115)
+    androidTestImplementation(libs.espresso.core.v351)
 }
