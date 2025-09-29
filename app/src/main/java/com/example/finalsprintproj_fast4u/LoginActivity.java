@@ -127,7 +127,6 @@ public class LoginActivity extends AppCompatActivity {
             userdata1.setNome(userDataName);
             userdata1.setEmail(userDataEmail);
         }
-            //Repasso as informações em forma de intent, o que já foi inutilizado.
     }
 
     //Login com o google.
@@ -163,19 +162,21 @@ public class LoginActivity extends AppCompatActivity {
             if (mAuth.getCurrentUser() != null) {
                 //Definingo todes es veriéveis ague
                 String UserName = mAuth.getCurrentUser().getDisplayName();
-                String Email = mAuth.getCurrentUser().getEmail();
+                String UserEmail = mAuth.getCurrentUser().getEmail();
                 //Pelo visto os dados serão dispostos em uma organização diferente.
 
                 HashMap<String, String> userMap = new HashMap<String, String>();
                 userMap.put("Nome", UserName);
-                userMap.put("Email", Email);
-                db.collection("usuarios").document(Email)
+                userMap.put("Email", UserEmail);
+
+                //userMap.put("Address", Address); -- Esse vai em outro lugar
+                db.collection("usuarios").document(UserEmail)
                         .set(userMap, SetOptions.merge())
                         .addOnCompleteListener(task -> {
-                            Log.d(TAG, "HOLY MOLY");
+                            Log.d(TAG, "HOLY (:");
                         })
                         .addOnFailureListener(task -> {
-                            Log.d(TAG, "HOLY F@CK");
+                            Log.d(TAG, "HOLY :(");
                         });
             }
 

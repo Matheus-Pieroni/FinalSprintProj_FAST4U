@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D80000">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="463dp"
+        android:layout_height="81dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView3"
+            android:layout_width="86dp"
+            android:layout_height="83dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/Circular"
+            app:srcCompat="@drawable/main_icon" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/userFoodPreference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/adlamdisp"
+        android:text="Comida Preferida"
+        android:textColor="@color/azure"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+    <TextView
+        android:id="@+id/userAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/adlamdisp"
+        android:text="Endereço"
+        android:textColor="@color/azure"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodPrefGr" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/createAccBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cstm_btn2"
+        android:backgroundTint="@color/lightcoral"
+        android:fontFamily="@font/adlamdisp"
+        android:text="Enviar"
+        android:textColor="@color/azure"
+        android:textSize="16dp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.872" />
+
+    <RadioGroup
+        android:id="@+id/foodPrefGr"
+        android:layout_width="190dp"
+        android:layout_height="241dp"
+        app:layout_constraintEnd_toEndOf="@+id/userFoodPreference"
+        app:layout_constraintStart_toStartOf="@+id/userFoodPreference"
+        app:layout_constraintTop_toBottomOf="@+id/userFoodPreference">
+
+        <RadioButton
+            android:id="@+id/btnPizza"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/aliceblue"
+            android:fontFamily="@font/adlamdisp"
+            android:text="Pizza" />
+
+        <RadioButton
+            android:id="@+id/btnJap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/aliceblue"
+            android:fontFamily="@font/adlamdisp"
+            android:text="Com. Japonesa" />
+
+        <RadioButton
+            android:id="@+id/btnHamb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/aliceblue"
+            android:fontFamily="@font/adlamdisp"
+            android:checked="true"
+            android:text="Hamburger" />
+
+        <RadioButton
+            android:id="@+id/btnSalg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/aliceblue"
+            android:fontFamily="@font/adlamdisp"
+            android:text="Salgado" />
+
+        <RadioButton
+            android:id="@+id/btnDoce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/aliceblue"
+            android:fontFamily="@font/adlamdisp"
+            android:text="Doce" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/userPostalAddress"
+        android:layout_width="319dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:textColor="@color/aliceblue"
+        android:fontFamily="@font/adlamdisp"
+        android:textAllCaps="true"
+        android:inputType="textPostalAddress"
+        app:layout_constraintBottom_toTopOf="@+id/createAccBtn"
+        app:layout_constraintEnd_toEndOf="@+id/userAddress"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/userAddress"
+        app:layout_constraintTop_toBottomOf="@+id/userAddress"
+        app:layout_constraintVertical_bias="0.253" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
