@@ -163,11 +163,19 @@ public class LoginActivity extends AppCompatActivity {
                 //Definingo todes es veriéveis ague
                 String UserName = mAuth.getCurrentUser().getDisplayName();
                 String UserEmail = mAuth.getCurrentUser().getEmail();
+                String UserPhoto;
+
+                if (mAuth.getCurrentUser().getPhotoUrl() == null) {
+                     UserPhoto = mAuth.getCurrentUser().getPhotoUrl().toString();
+                } else {
+                    UserPhoto = "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541";
+                }
                 //Pelo visto os dados serão dispostos em uma organização diferente.
 
                 HashMap<String, String> userMap = new HashMap<String, String>();
                 userMap.put("Nome", UserName);
                 userMap.put("Email", UserEmail);
+                userMap.put("photoUrl", UserPhoto);
 
                 //userMap.put("Address", Address); -- Esse vai em outro lugar
                 db.collection("usuarios").document(UserEmail)
