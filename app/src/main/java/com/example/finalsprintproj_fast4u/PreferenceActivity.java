@@ -117,33 +117,33 @@ public class PreferenceActivity extends AppCompatActivity {
         switch (preference) {
             case "Hamburger":
                 title1 = "McDonald's";
-                imageUrl1 = "https://yt3.googleusercontent.com/m2N3G5IuofYk3Lld7t1jKxUMrJZzpYLul6P0nE-MGKmLKN7qvC6Ocf8YMKw6UEXmaO8wVa2Dvck=s900-c-k-c0x00ffffff-no-rj";
+                imageUrl1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq4sIWzdKqCadotiXRKQ0zndmbPGABUHGxJA&s";
                 title2 = "Burger King";
-                imageUrl2 = "https://yt3.googleusercontent.com/6YddgxsH8xcnDIASLYyN8xOrKU3OrlGvKsP8Gv7kvOsiGqUkolpIanOr0Ku0dWUnhO4wHw-TFg=s900-c-k-c0x00ffffff-no-rj";
+                imageUrl2 = "https://raichu-uploads.s3.amazonaws.com/logo_null_spPge9.png";
                 break;
             case "Pizza":
                 title1 = "Domino's";
-                imageUrl1 = "https://iguatemi.com.br/saojosedoriopreto/sites/saojosedoriopreto/files/logo-1360205848996.png";
+                imageUrl1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY8C9EEKyH-QuIHhSdpkCBQpM7D_D-HVCz1Q&s";
                 title2 = "Pizza Hut";
-                imageUrl2 = "https://play-lh.googleusercontent.com/KBcXULt2lL9nGtn6WZzzJ-7uwiqMaVj0D_SOObMqS99X4hiLHrfyMF";
+                imageUrl2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5F7IDxxCSN_jDs9pcGZwABLpTY0zMX66qDQ&s";
                 break;
             case "Doce":
                 title1 = "Cacau Show";
-                imageUrl1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQno5Dt0PYxth20VEpdV48XR6s47lZef0sHSQ&s";
+                imageUrl1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGObterCpw46VO3cqPcAPJjiHSRXpMZhj-tA&s";
                 title2 = "Sodiê Doces";
-                imageUrl2 = "https://img.deliverydireto.com.br/unsafe/origxorig/https://duisktnou8b89.cloudfront.net/img/stores/64c7b59de71e3.png";
+                imageUrl2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1RkYCCWpiC7Vp3wsUgv4dJOrRZ96DwoeOFQ&s";
                 break;
             case "Salgado": // <<< FIXED: ADDED SALGADO CASE
                 title1 = "Habib's";
-                imageUrl1 = "https://static-images.ifood.com.br/image/upload/t_high/logosgde/e1c62181-8718-4a4b-9721-d74889c679a9/202206231016_cuus_i.png";
+                imageUrl1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM8q-A5_me6xPHIB0zBUN9-QWnAIAn2QF4eQ&s";
                 title2 = "Ragazzo";
-                imageUrl2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq3fT6-Lw61Yv0-BOrx-LhUa2W8wH5O6C_jA&s";
+                imageUrl2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ3FZIdWmrRKoZjUA-LsV4zdLDghj1JobCHA&s";
                 break;
             case "Japonesa":
                 title1 = "Gendai";
-                imageUrl1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR07fJ0zD4Q-0J4pX3G8y9H6Z-b6e5Z9n7_7w&s";
+                imageUrl1 = "https://gsobmidia.com.br/uploads/lojas/1367/gendai_1610020899.jpg";
                 title2 = "China in Box";
-                imageUrl2 = "https://www.chinainbox.com.br/App_Themes/ChinaInBox/img/logo-china-in-box-og.png";
+                imageUrl2 = "https://play-lh.googleusercontent.com/mHUaPq-EwnR74PaP7if9N5lEZzzNxvnXk1FFBaU5hE2mwgOzg7qkYGh4UjoOxBiQzg";
                 break;
             // Add other cases for "Salgado", "Japonesa", etc.
             default:
